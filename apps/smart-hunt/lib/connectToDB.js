@@ -1,8 +1,6 @@
 import { Pool } from 'pg';
 
-const connectionString =
-  process.env.DATABASE_URL ||
-  'postgresql://localhost:5432/smart_hunt_development';
+const connectionString = process.env.DATABASE_URL;
 
 const pool = new Pool({
   connectionString,

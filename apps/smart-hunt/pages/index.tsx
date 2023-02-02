@@ -1,4 +1,7 @@
 import styles from './index.module.css';
+import * as dotenv from 'dotenv'
+dotenv.config()
+import React from 'react';
 
 export function Index() {
   /*
