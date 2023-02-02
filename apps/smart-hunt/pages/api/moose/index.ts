@@ -1,4 +1,3 @@
-import { Client } from "pg/lib";
 import connectToDB from "../../../lib/connectToDB";
 
 export default async function handler(req, res) {
