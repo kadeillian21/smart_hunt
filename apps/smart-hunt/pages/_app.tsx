@@ -1,12 +1,13 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import React from 'react';
 import './styles.css';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to smart-hunt!</title>
+        <title>Smart Hunt!</title>
       </Head>
       <main className="app">
         <Component {...pageProps} />
