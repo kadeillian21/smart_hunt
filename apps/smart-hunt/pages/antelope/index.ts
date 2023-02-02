@@ -1,7 +1,7 @@
 import React from "react"
 import connectToDB from "../../lib/dbConnect"
 
-export function Antelope(antelopes) {
+export function Antelope() {
   const antelopes = antelopes.map(antelope => {}
   return (
     <div>{antelopes}</div>
