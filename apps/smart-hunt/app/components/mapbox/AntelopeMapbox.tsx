@@ -46,6 +46,22 @@ const AntelopeMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.addLayer({
+          id: "antelope-labels",
+          type: "symbol",
+          source: "antelope",
+          "source-layer": "antelope",
+          layout: {
+            "text-field": "{DISTRICT}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "blue",
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

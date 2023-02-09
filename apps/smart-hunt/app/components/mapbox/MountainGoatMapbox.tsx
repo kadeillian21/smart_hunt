@@ -46,6 +46,22 @@ const MountainGoatMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.addLayer({
+          id: "mountain-goat-labels",
+          type: "symbol",
+          source: "mountain-goat",
+          "source-layer": "mountain-goat",
+          layout: {
+            "text-field": "{DISTRICT}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "blue",
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

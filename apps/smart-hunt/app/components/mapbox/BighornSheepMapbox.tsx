@@ -46,6 +46,22 @@ const BighornSheepMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.addLayer({
+          id: "bighorn-sheep-labels",
+          type: "symbol",
+          source: "bighorn-sheep",
+          "source-layer": "bighorn-sheep",
+          layout: {
+            "text-field": "{DISTRICT}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "blue",
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

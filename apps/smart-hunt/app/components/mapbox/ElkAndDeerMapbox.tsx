@@ -46,6 +46,22 @@ const ElkAndDeerMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.addLayer({
+          id: "deer-and-elk-hunting-district-labels",
+          type: "symbol",
+          source: "deer-and-elk-hunting-district",
+          "source-layer": "deer-and-elk",
+          layout: {
+            "text-field": "{DISTRICT}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "blue",
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

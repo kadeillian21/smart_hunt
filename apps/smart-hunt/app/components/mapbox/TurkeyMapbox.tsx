@@ -46,6 +46,22 @@ const TurkeyMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.addLayer({
+          id: "turkey-labels",
+          type: "symbol",
+          source: "turkey",
+          "source-layer": "turkey",
+          layout: {
+            "text-field": "{DISTRICT}",
+            "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
+            "text-size": 12,
+          },
+          paint: {
+            "text-color": "blue",
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 
