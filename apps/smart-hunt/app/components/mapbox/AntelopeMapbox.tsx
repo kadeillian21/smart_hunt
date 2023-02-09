@@ -6,8 +6,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoia2FkZWlsbGlhbjIxIiwiYSI6ImNsZG54MnZzZDBua2wzdXFwZHhxdzBva2gifQ.bANYko0jxjqxRWQaHSsq0g";
 
-const Map = () => {
-  const mapContainer = useRef(null);
+const AntelopeMap = () => {
+  const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState(null);
   const [lng, setLng] = useState(-110.1);
   const [lat, setLat] = useState(47);
@@ -15,28 +15,30 @@ const Map = () => {
 
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
-      const map = new mapboxgl.Map({
+      const mapInstance = new mapboxgl.Map({
         container: mapContainer.current,
         style: "mapbox://styles/kadeillian/claitiml1001315pdm4ip7sh0",
         center: [lng, lat],
         zoom,
       });
 
-      map.on("load", () => {
-        setMap(map);
-        map.resize();
+      mapInstance.on("load", () => {
+        setMap(mapInstance);
+        mapInstance.resize();
       });
     };
 
-    if (!map) initializeMap({ setMap, mapContainer });
-  }, [map]);
+    if (!map && mapContainer.current) {
+      initializeMap({ setMap, mapContainer });
+    }
+  }, [lat, lng, map, mapContainer, zoom]);
 
   return (
     <div
-      ref={(el) => (mapContainer.current = el)}
+      ref={mapContainer}
       style={{ height: "100vh", width: "100vw" }}
     />
   );
 };
 
-export default Map;
+export default AntelopeMap;
