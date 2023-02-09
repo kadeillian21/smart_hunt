@@ -25,6 +25,27 @@ const MooseMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("moose", {
+          type: "vector",
+          url: "mapbox://kadeillian21.moose"
+        });
+
+        mapInstance.addLayer({
+          id: "moose-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.moose"
+          },
+          "source-layer": "moose",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

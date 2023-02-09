@@ -25,6 +25,27 @@ const BlackBearMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("black-bear", {
+          type: "vector",
+          url: "mapbox://kadeillian21.black-bear"
+        });
+
+        mapInstance.addLayer({
+          id: "black-bear-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.black-bear"
+          },
+          "source-layer": "black-bear",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

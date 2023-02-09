@@ -25,6 +25,27 @@ const BighornSheepMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("bighorn-sheep", {
+          type: "vector",
+          url: "mapbox://kadeillian21.bighorn-sheep"
+        });
+
+        mapInstance.addLayer({
+          id: "bighorn-sheep-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.bighorn-sheep"
+          },
+          "source-layer": "bighorn-sheep",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

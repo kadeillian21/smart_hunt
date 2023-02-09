@@ -25,6 +25,27 @@ const MountainLionMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("mountain-lion", {
+          type: "vector",
+          url: "mapbox://kadeillian21.mountain-lion"
+        });
+
+        mapInstance.addLayer({
+          id: "mountain-lion-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.mountain-lion"
+          },
+          "source-layer": "mountain-lion",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

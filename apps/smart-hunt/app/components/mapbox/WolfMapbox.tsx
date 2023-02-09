@@ -25,6 +25,27 @@ const WolfMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("wolf", {
+          type: "vector",
+          url: "mapbox://kadeillian21.wolf"
+        });
+
+        mapInstance.addLayer({
+          id: "wolf-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.wolf"
+          },
+          "source-layer": "wolf",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

@@ -25,6 +25,27 @@ const MountainGoatMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("mountain-goat", {
+          type: "vector",
+          url: "mapbox://kadeillian21.mountain-goat"
+        });
+
+        mapInstance.addLayer({
+          id: "mountain-goat-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.mountain-goat"
+          },
+          "source-layer": "mountain-goat",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

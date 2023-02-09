@@ -25,6 +25,27 @@ const ElkAndDeerMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("deer-and-elk-hunting-district", {
+          type: "vector",
+          url: "mapbox://kadeillian21.deer-and-elk-hunting-districts"
+        });
+
+        mapInstance.addLayer({
+          id: "deer-and-elk-hunting-district-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.deer-and-elk-hunting-districts"
+          },
+          "source-layer": "deer-and-elk",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

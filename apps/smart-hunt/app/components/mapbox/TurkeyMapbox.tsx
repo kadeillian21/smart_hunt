@@ -25,6 +25,27 @@ const TurkeyMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("turkey", {
+          type: "vector",
+          url: "mapbox://kadeillian21.turkey"
+        });
+
+        mapInstance.addLayer({
+          id: "turkey-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.turkey"
+          },
+          "source-layer": "turkey",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 

@@ -25,6 +25,27 @@ const UplandGameMap = () => {
       mapInstance.on("load", () => {
         setMap(mapInstance);
         mapInstance.resize();
+
+        mapInstance.addSource("upland-game", {
+          type: "vector",
+          url: "mapbox://kadeillian21.upland-game"
+        });
+
+        mapInstance.addLayer({
+          id: "upland-game-layer",
+          type: "line",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.upland-game"
+          },
+          "source-layer": "upland-game",
+          paint: {
+            "line-color": "orange",
+            "line-width": 3,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
       });
     };
 
