@@ -6,6 +6,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoia2FkZWlsbGlhbjIxIiwiYSI6ImNsZG54MnZzZDBua2wzdXFwZHhxdzBva2gifQ.bANYko0jxjqxRWQaHSsq0g";
 
+
 const ElkAndDeerMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState(null);

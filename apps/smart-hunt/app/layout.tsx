@@ -1,4 +1,7 @@
 import React from "react";
+import Navbar from "./components/Navbar";
+import "./globals.css";
+
 
 export default function RootLayout({
   // Layouts must accept a children prop.

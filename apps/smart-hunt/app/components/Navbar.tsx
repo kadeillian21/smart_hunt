@@ -1,42 +1,26 @@
-import { Link } from "react-router-dom";
-import { Logout } from "./Logout";
+'use client'
+
 import React from "react";
 
+// The Navbar component is a simple TSX component that causes a navbar to render at the top of each page.  The Navbar houses links to the home page, to the display page (reviews), and to the modify page (contribute).
 
-export function Navbar() {
-  return(
-    <nav className="navbar navbar-expand-lg fixed-top navbar-background">
-      <div className="container-fluid">
-        <Link className="navbar-brand text-white" to="/">
-          Smart Hunt
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link active text-white" aria-current="page" to="/species">
-                Species
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link active text-white" aria-current="page" to="/charts">
-                Charts
-              </Link>
-            </li>
-          </ul>
+
+function Navbar() {
+  return (
+    <div>
+      <nav className="bg-gray-800">
+        <div className="max-w-7xl mx-1 px-4 sm:px-6 lg:px-8 trial">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+              <div className="flex-shrink-0">
+                mango
+              </div>
+            </div>
+          </div>
         </div>
-        <Logout />
-      </div>
-    </nav>
-  )
+      </nav>
+    </div>
+  );
 }
+
+export default Navbar

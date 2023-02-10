@@ -28,7 +28,8 @@
     "src/**/*.jsx",
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "../../apps/smart-hunt/.next/types/**/*.ts"
+    "../../apps/smart-hunt/.next/types/**/*.ts",
+    "../../dist/apps/smart-hunt/.next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",
