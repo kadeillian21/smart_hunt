@@ -34,6 +34,21 @@ const ElkAndDeerMap = () => {
 
         mapInstance.addLayer({
           id: "deer-and-elk-hunting-district-layer",
+          type: "fill",
+          source: {
+            type: "vector",
+            url: "mapbox://kadeillian21.deer-and-elk-hunting-districts"
+          },
+          "source-layer": "deer-and-elk",
+          paint: {
+            "fill-color": "orange",
+            "fill-opacity": 0.1,
+          },
+          minzoom: 0,
+          maxzoom: 22,
+        });
+        mapInstance.addLayer({
+          id: "deer-and-elk-hunting-district-line",
           type: "line",
           source: {
             type: "vector",
@@ -41,7 +56,7 @@ const ElkAndDeerMap = () => {
           },
           "source-layer": "deer-and-elk",
           paint: {
-            "line-color": "orange",
+            "line-color": "red",
             "line-width": 3,
           },
           minzoom: 0,
@@ -63,7 +78,16 @@ const ElkAndDeerMap = () => {
           minzoom: 0,
           maxzoom: 22,
         });
+        mapInstance.on("click", "deer-and-elk-hunting-district-layer", (e) => {
+          const feature = e.features[0];
+          const district = feature.properties.DISTRICT;
+          new mapboxgl.Popup()
+            .setLngLat(e.lngLat)
+            .setHTML(`<p>District: ${district}</p>`)
+            .addTo(mapInstance);
+        });
       });
+
     };
 
     if (!map && mapContainer.current) {
