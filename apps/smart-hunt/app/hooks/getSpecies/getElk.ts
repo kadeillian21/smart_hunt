@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Elk } from '../../../types/elk';
 
-export default function GetElk() {
-  const [elk, setElk] = useState([]);
+const UseGetElkData = () => {
+  const [elkData, setElkData] = useState<Elk[]>([]);
 
-  const getElk = () => {
-    axios.get("http://localhost:3000/api/elk")
-      .then((res) => {
-        setElk(res.data.filter((elk) => elk.license_year === 2021));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-  useEffect(getElk, []);
-}
+  useEffect(() => {
+    const fetchElkData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4200/api/elk");
+        setElkData(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchElkData();
+  });
+  
+  return elkData;
+};
+
+export default UseGetElkData;
