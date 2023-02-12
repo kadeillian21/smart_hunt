@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@smart-hunt/elk": ["libs/elk/src/index.ts"]
+      "@smart-hunt/elk": ["libs/elk/src/index.ts"],
+      "@smart-hunt/map": ["libs/map/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
