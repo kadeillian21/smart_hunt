@@ -13,6 +13,7 @@
         ],
         "accessToken": "NzQ3Y2MwZmUtZWUwZS00YTVhLWI1YTUtMmVhYjcwN2Q0NWYxfHJlYWQtd3JpdGU="
       }
+      
     }
   },
   "targetDefaults": {
@@ -64,7 +65,19 @@
   "generators": {
     "@nrwl/react": {
       "application": {
-        "babel": true
+        "babel": true,
+        "tasks": {
+          "smart-hunt:build:styles": {
+            "executor": "nx-node",
+            "command": "npm run build:styles",
+            "target": "smart-hunt",
+            "configurations": {
+              "production": {
+                "command": "npm run build:styles:prod"
+              }
+            }
+          }
+        }
       }
     },
     "@nrwl/next": {

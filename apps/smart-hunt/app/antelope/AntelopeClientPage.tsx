@@ -4,7 +4,7 @@ import React from 'react'
 
 export function AntelopeClientPage() {
   return (
-    <div>
+    <div className='bg-red-500'>
       Antelope
     </div>
   )

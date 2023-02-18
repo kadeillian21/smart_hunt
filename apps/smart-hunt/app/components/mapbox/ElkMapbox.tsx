@@ -4,23 +4,18 @@ import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import axios from "axios";
+import { getElk } from "../hooks/getSpecies/getElk";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoia2FkZWlsbGlhbjIxIiwiYSI6ImNsZG54MnZzZDBua2wzdXFwZHhxdzBva2gifQ.bANYko0jxjqxRWQaHSsq0g";
 
 
 const ElkAndDeerMap = () => {
+  console.log(getElk)
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState(null);
   const [lng, setLng] = useState(-110.1);
   const [lat, setLat] = useState(47);
   const [zoom, setZoom] = useState(6.25);
-
-  async function fetchData() {
-    const response = await axios.get("http://localhost:4200/api/elk");
-    const elkData = response.data.data;
-    const filteredData = elkData.filter(elk => elk.license_year === 2021 && elk.residency === 'SUM');
-    return filteredData;
-  }
 
   useEffect(() => {
     const initializeMap = ({ setMap, mapContainer }) => {
