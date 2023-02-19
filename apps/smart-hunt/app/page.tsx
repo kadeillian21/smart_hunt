@@ -1,5 +1,5 @@
 import React from 'react';
-import ElkAndDeerMap from './components/mapbox/ElkMapbox';
+import Mapbox from './components/mapbox/Mapbox';
 
 export function Index() {
   /*
@@ -8,7 +8,7 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.css file.
    */
   return (
-    <ElkAndDeerMap />
+    <Mapbox />
   );
 }
 

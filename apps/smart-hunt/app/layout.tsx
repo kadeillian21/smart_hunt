@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/globals.css";
+import Navbar from "./components/UI/Navbar";
 
 
 export default function RootLayout({
@@ -11,7 +12,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className="sticky top-0 z-50">
+          <Navbar />
+        </div>
+        {children}
+        </body>
     </html>
   );
 }
