@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import mapboxStore from "../../mapboxStoreMobX";
 
 function FilterBar() {
   const speciesOptions = [
@@ -22,41 +23,61 @@ function FilterBar() {
     "All Residencies",
   ]
 
-  const years = Array.from(Array(19), (_, index) => 2004 + index);
+  const years = [
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+  ];
 
   // State
-  const [selectedSpeciesOption, setSelectedSpeciesOption] = useState(speciesOptions[2]);
-  const [selectedResidencyOption, setSelectedResidencyOption] = useState(residencyOptions[2]);
+  const { speciesState, residencyState, startYearState, endYearState } = mapboxStore
+  const { setSpeciesState, setResidencyState, setStartYearState, setEndYearState } = mapboxStore
   const [isSpeciesOpen, setIsSpeciesOpen] = useState(false);
   const [isResidencyOpen, setIsResidencyOpen] = useState(false);
-  const [startYear, setStartYear] = useState(years[0]);
-  const [endYear, setEndYear] = useState(years[0]);
 
   const handleSpeciesOptionClick = (option) => {
-    setSelectedSpeciesOption(option);
+    setSpeciesState(option);
     setIsSpeciesOpen(false);
   };
 
   const handleResidencyOptionClick = (option) => {
-    setSelectedResidencyOption(option);
+    setResidencyState(option);
     setIsResidencyOpen(false);
   }
 
   const handleStartYearChange = (event) => {
     const selectedYear = parseInt(event.target.value);
-    setStartYear(selectedYear);
-    if (selectedYear > endYear) {
-      setEndYear(selectedYear);
+    setStartYearState(selectedYear);
+    if (selectedYear > endYearState) {
+      setEndYearState(selectedYear);
     }
   };
 
   const handleEndYearChange = (event) => {
     const selectedYear = parseInt(event.target.value);
-    setEndYear(selectedYear);
-    if (selectedYear < startYear) {
-      setStartYear(selectedYear);
+    console.log(selectedYear)
+    setEndYearState(selectedYear);
+    console.log(setEndYearState(selectedYear))
+    if (selectedYear < startYearState) {
+      setStartYearState(selectedYear);
     }
   };
+
 
   return (
     <div>
@@ -73,7 +94,7 @@ function FilterBar() {
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  {selectedSpeciesOption}
+                  {speciesState}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -120,7 +141,7 @@ function FilterBar() {
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  {selectedResidencyOption}
+                  {residencyState}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +182,7 @@ function FilterBar() {
               <div className="flex items-center mx-2">
                 <label className="mr-2">Start Year:</label>
                 <select
-                  value={startYear}
+                  value={startYearState}
                   onChange={handleStartYearChange}
                   className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 >
@@ -173,11 +194,11 @@ function FilterBar() {
                 </select>
                 <label className="mx-2">End Year:</label>
                 <select
-                  value={endYear}
+                  value={endYearState}
                   onChange={handleEndYearChange}
                   className="rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 >
-                  {years.slice(years.indexOf(startYear)).map((year) => (
+                  {years.slice(years.indexOf(startYearState)).map((year) => (
                     <option key={year} value={year}>
                       {year}
                     </option>

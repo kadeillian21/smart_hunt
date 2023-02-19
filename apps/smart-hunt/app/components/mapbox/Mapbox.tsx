@@ -1,13 +1,14 @@
 'use client'
 
 import React, { useRef, useEffect, useState } from "react";
+import { observer } from 'mobx-react-lite';
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import FilterBar from "../UI/FilterBar";
 
 mapboxgl.accessToken = "pk.eyJ1Ijoia2FkZWlsbGlhbjIxIiwiYSI6ImNsZG54MnZzZDBua2wzdXFwZHhxdzBva2gifQ.bANYko0jxjqxRWQaHSsq0g";
 
-const Mapbox = () => {
+const Mapbox = observer(() => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const [map, setMap] = useState(null);
   const [lng, setLng] = useState(-110.1);
@@ -45,6 +46,6 @@ const Mapbox = () => {
       />
     </div>
   );
-};
+});
 
 export default Mapbox;

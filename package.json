@@ -20,6 +20,8 @@
     "env-cmd": "^10.1.0",
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^2.12.0",
+    "mobx": "^6.8.0",
+    "mobx-react-lite": "^3.4.0",
     "next": "^13.1.6",
     "next-connect": "^0.13.0",
     "pg": "^8.9.0",
