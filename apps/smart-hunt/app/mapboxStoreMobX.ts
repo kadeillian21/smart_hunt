@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 class MapboxStore {
-  speciesState = 'Black Bear';
+  speciesState = 'Elk';
   residencyState = 'All Residency';
   startYearState = 2020
   endYearState = 2021
