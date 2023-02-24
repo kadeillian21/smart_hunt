@@ -90,7 +90,7 @@ const CountiesMap = () => {
           if (countyElkData.length > 0) {
             countyElkData.forEach(elk => {
               elkDataString +=
-              `<p>Number of B&C Trophies Harvested: ${elk[" trophy_count"]}</p>
+              `<p>Number of B&C Trophies Harvested: ${elk.trophy_count}</p>
               `
             });
           } else {
