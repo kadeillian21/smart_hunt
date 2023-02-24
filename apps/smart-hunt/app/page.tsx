@@ -1,4 +1,5 @@
 import React from 'react';
+import CountiesMapbox from './components/mapbox/CountiesMapbox';
 import Mapbox from './components/mapbox/Mapbox';
 
 export function Index() {
@@ -8,7 +9,7 @@ export function Index() {
    * Note: The corresponding styles are in the ./index.css file.
    */
   return (
-    <Mapbox />
+    <CountiesMapbox />
   );
 }
 

@@ -4,7 +4,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { observer } from 'mobx-react-lite';
 import "mapbox-gl/dist/mapbox-gl.css";
 import FilterBar from "../UI/FilterBar";
-import axios from "axios";
 import mapboxStore from "../../mapboxStoreMobX";
 import ElkMapbox from "./ElkMapbox";
 import AntelopeMapbox from "./AntelopeMapbox";
@@ -21,9 +20,12 @@ import WolfMapbox from "./WolfMapbox";
 
 
 const Mapbox = observer(() => {
+  const speciesState = mapboxStore.speciesState
+
   let componentToRender;
-  switch (mapboxStore.speciesState) {
+  switch (speciesState) {
     case "Antelope":
+      console.log("antelope")
       componentToRender = <AntelopeMapbox />;
       break;
     case "Bighorn Sheep":
@@ -65,9 +67,11 @@ const Mapbox = observer(() => {
   }
 
   return (
-    <div>
-      <FilterBar />
-      {componentToRender}
+    <div className="relative">
+      <div className="absolute z-10 w-full">
+        <FilterBar />
+      </div>
+      <div className="z-0">{componentToRender}</div>
     </div>
   )
 });

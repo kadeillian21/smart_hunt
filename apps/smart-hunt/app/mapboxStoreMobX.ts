@@ -3,8 +3,7 @@ import { makeAutoObservable } from 'mobx';
 class MapboxStore {
   speciesState = 'Elk';
   residencyState = 'All Residency';
-  startYearState = 2020
-  endYearState = 2021
+  yearState = "2021"
 
   constructor() {
     makeAutoObservable(this);
@@ -18,13 +17,10 @@ class MapboxStore {
     this.residencyState = residency;
   }
 
-  setStartYearState = (startYear: number) => {
-    this.startYearState = startYear;
+  setYearState = (year: string) => {
+    this.yearState = year;
   }
 
-  setEndYearState = (endYear: number) => {
-    this.endYearState = endYear;
-  }
 }
 
 const mapboxStore = new MapboxStore();
